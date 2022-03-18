@@ -3,7 +3,7 @@
     where T is the uptime and I is the flash interval (both are in milliseconds).
     This resolves to either 0.x or 1.x which is then passed to the digitalWrite function; ignoing x.
 */
-// #define LED_BUILTIN 21
+
 const int ledPin =  LED_BUILTIN; // I/O pin used for LED (LED_BUILTIN could be used thoughtout)
 const long ledFlash = 500;       // Flash interval (in milliseconds)
 
