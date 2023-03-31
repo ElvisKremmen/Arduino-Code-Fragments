@@ -1,0 +1,6 @@
+String padLeft (String inString, int newLen) {  // Pad a string, inString, with preceding spaces until it has a length of that passed in the newLen argument
+    while (inString.length() < newLen) {
+    inString = String(" ") + inString; 
+  };
+  return inString;
+}
