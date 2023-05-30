@@ -1,0 +1,25 @@
+  // Controlling servos
+  // Steering trim adjust: left or right jButton for trim left or right; both for trim reset ****************
+  // jButton push is active low so Boulean logic is inverted
+  servo1Trim = (servo1Trim - (data.j1Button || servo1Trim > 19) + (data.j2Button || servo1Trim < -19)) * (data.j1Button || data.j2Button); //Apply steering trim
+  // ********************************************************************************************************
+
+  // Map the receiving value form 0 to 255 to 0 to 180(degrees), values used for controlling servos
+  servo1Value = map(data.j2PotX, 255, 0, 60, 120) + servo1Trim;     // Joy2X - Right stick steering (offset to avoid damaged sevo gear)
+  servo2Value = map(data.j1PotY, 0, 255, 70, 110) + offset2;        // Joy1Y - Left stick throttle (offset for ESC neutral)
+  servo3Value = map(data.j1PotX, 0, 255, 60, 120) + servo1Trim;     // Joy1X - Left stick steering (normally unused channel for car)
+  servo4Value = map(data.j2PotY, 0, 255, 70, 110) + offset2;        // Joy2Y - right stick throttle (normally unused channel for car)
+  servo5Value = map(data.tSwitch1, 0, 1, 0, 180);                   // Aux1 switch 1
+  servo6Value = map(data.tSwitch2, 0, 1, 0, 180);                   // Aux2 switch 2
+  //servo7Value = map(data.j1Button, 0, 1, 0, 180);                 // Aux3 joyButton 1 (unused when trimming steering)
+  //servo8Value = map(data.j2Button, 0, 1, 0, 180);                 // Aux4 joyButton 2 (unused when trimming steering)
+
+
+  servo1.write(servo1Value);
+  servo2.write(servo2Value);
+  servo3.write(servo3Value);
+  servo4.write(servo4Value);
+  servo5.write(servo5Value);
+  servo6.write(servo6Value);
+  //servo7.write(servo7Value);
+  //servo8.write(servo8Value);
