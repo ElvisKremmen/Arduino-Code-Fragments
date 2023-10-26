@@ -1,5 +1,8 @@
-yourStr = padLeft (String (yourValue), yourNewLen);
+void loop() {
 
+    yourStr = padLeft (String (yourValue), yourNewLen);
+
+}
 
 
 String padLeft (String inString, int newLen) {    // Pad a numeric string with spaces for output
